@@ -1,0 +1,34 @@
+{
+  "name": "secureform",
+  "version": "0.0.0",
+  "description": "node.js using flatiron, passport and csrf",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doron2402/secureform.git"
+  },
+  "keywords": [
+    "node.js",
+    "flatiron",
+    "csrf",
+    "flatiron-passport"
+  ],
+  "author": "Doron Segal",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/doron2402/secureform/issues"
+  },
+  "homepage": "https://github.com/doron2402/secureform",
+  "dependencies": {
+    "flatiron": "~0.3.11",
+    "union": "~0.3.8",
+    "connect": "~2.12.0",
+    "nodemon": "~0.7.10",
+    "connect-csrf-cookie": "0.0.1",
+    "flatiron-passport": "0.0.9",
+    "csrf": "0.0.3"
+  }
+}
