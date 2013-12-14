@@ -1,37 +1,37 @@
   var flatiron = require('flatiron'),
-      connect = require('connect'),
-      crypto = require('crypto'),
-      csrf = require('csrf'),
+      connect = require('connect'), 
       fipassport = require('flatiron-passport'),
-      app = flatiron.app;
-  
+      app = flatiron.app;  
 
-  console.log('Starting the server:');
+  console.log('Starting the server: PORT: 9999');
   app.use(flatiron.plugins.http, {
     // HTTP options
+    before: [
+    connect.favicon(),
+    connect.logger('dev'),
+    connect.static('public'),
+    connect.directory('public'),
+    connect.cookieParser(),
+    connect.session({ secret: 'asdf' }),
+    connect.bodyParser(),
+    connect.csrf()
+  ]
+
   });
   
-  app.use(fipassport);
-  app.use(connect.cookieParser());
-  app.use(connect.session({ secret: 'keyboard cat' }));
-  app.use(connect.csrf());
-  app.use(require('connect-csrf-cookie')());
 
-
-  //
-  // app.router is now available. app[HTTP-VERB] is also available
-  // as a shortcut for creating routes
-  //
-  app.router.get('/version', function () {
+  app.router.get('/', function () {
+    token = this.req.csrfToken();
+    console.log(token);
     var html = '<h1> flatiron version: ' + flatiron.version;
-    
     this.res.writeHead(200, { 'Content-Type': 'text/html' }) 
     this.res.end(html);
   });
   
   app.router.get('/form', function(){
-    console.log(this.req.session);
-    var html = '<h1>Form:</h1><br /><form method="POST"><input type="text" name="someField" /><input type="submit" value="Submit"/></form>';
+    token = this.req.csrfToken();
+    var html = '<h1>Form:</h1><br /><form method="POST"><input type="text" name="someField" /><input type="hidden" value="'+token+'" name="_csrf" /><input type="submit" value="Submit"/></form>';
+    html += '<p>' + token + '</p>';
     this.res.writeHead(200, {'Content-Type': 'text/html'})
     this.res.end(html);
   });
