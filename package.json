@@ -23,9 +23,9 @@
   },
   "homepage": "https://github.com/doron2402/secureform",
   "dependencies": {
-    "flatiron": "~0.3.11",
+    "flatiron": "~0.4.0",
     "union": "~0.3.8",
-    "connect": "~2.12.0",
+    "connect": "~3.0.0",
     "nodemon": "~0.7.10",
     "connect-csrf-cookie": "0.0.1",
     "flatiron-passport": "0.0.9",
