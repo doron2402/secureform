@@ -29,6 +29,6 @@
     "nodemon": "~0.7.10",
     "connect-csrf-cookie": "0.0.1",
     "flatiron-passport": "0.0.9",
-    "csrf": "0.0.3"
+    "csrf": "2.0.1"
   }
 }
